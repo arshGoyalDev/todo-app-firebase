@@ -19,7 +19,7 @@ const Footer = () => {
           }}
         >
           <div
-            className={`absolute top-1 rounded-full left-1 w-6 h-6 transition-all duration-300 ${
+            className={`absolute top-[4.5px] left-1 w-6 h-6 transition-all duration-300 rounded-full ${
               darkMode ? "translate-x-8 bg-zinc-800" : " bg-gray-200"
             }`}
           ></div>
