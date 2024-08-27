@@ -1,12 +1,11 @@
-import {AuthProvider} from "./AuthContext"
+import { AuthProvider } from "./AuthContext";
+import { ThemeProvider } from "./ThemeContext";
 
-const ContextContainer = ({children}) => {
+const ContextContainer = ({ children }) => {
   return (
     <AuthProvider>
-
-      {children}
-
+      <ThemeProvider>{children}</ThemeProvider>
     </AuthProvider>
-  )
-}
-export default ContextContainer
+  );
+};
+export default ContextContainer;
