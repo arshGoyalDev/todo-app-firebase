@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import TransitionLink from "@/components/animations/TransitionLink";
 import { Input, PasswordInput } from "@/components/form";
+import { GoogleAuthButton } from "@/components/button";
 
 const SignUpPage = () => {
   const [nameValue, setNameValue] = useState("");
@@ -49,13 +50,23 @@ const SignUpPage = () => {
               type="email"
             />
 
-            <PasswordInput 
+            <PasswordInput
               passwordValue={passwordValue}
               setPasswordValue={setPasswordValue}
               errorPassword={errorPassword}
             />
+            <button className="text-white mt-10 w-full py-[14px] font-semibold bg-primary rounded-xl hover:bg-gray-400 hover:text-black dark:hover:text-white hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-300">
+              Sign Up
+            </button>
           </div>
         </form>
+        <div className="flex gap-2 items-center justify-stretch w-full max-w-[460px] mt-12 mb-8">
+          <span className="h-1 w-full bg-gray-100 dark:bg-zinc-800 rounded-full"></span>
+          <p className="w-full text-nowrap text-center font-medium">or Sign Up with</p>
+          <span className="h-1 w-full bg-gray-100 dark:bg-zinc-800 rounded-full"></span>
+        </div>
+
+        <GoogleAuthButton />
       </section>
     </main>
   );
