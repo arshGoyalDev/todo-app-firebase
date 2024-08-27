@@ -21,7 +21,7 @@ const PasswordInput = ({ passwordValue, setPasswordValue, errorPassword }) => {
         }`}
       />
 
-      <div className={`password-toggle ${viewPassword && "view"} absolute top-3 right-4 stroke-black dark:stroke-white`} onClick={() => {
+      <div className={`password-toggle ${viewPassword && "view"} absolute top-[13px] right-4 stroke-black dark:stroke-white`} onClick={() => {
         viewPassword ? setViewPassword(false) : setViewPassword(true)
       }}>
         <svg
