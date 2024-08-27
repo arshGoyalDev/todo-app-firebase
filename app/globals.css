@@ -17,3 +17,25 @@ body {
 .page-transition {
   @apply -translate-x-10 bg-black opacity-0 blur-lg;
 }
+
+/************************/
+/* inputs */
+/************************/
+
+input:active,
+input:focus {
+  outline: 0;
+}
+
+/************************/
+/* password */
+/************************/
+
+.password-toggle::before {
+  content: '';
+  @apply w-8 h-[2px] rounded-full bg-black dark:bg-white -rotate-45 absolute top-3 -right-1 scale-x-0 transition-all duration-300;
+}
+
+.password-toggle.view::before {
+  @apply scale-x-100;
+}

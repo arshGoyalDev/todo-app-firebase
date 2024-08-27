@@ -3,14 +3,16 @@
 import { useState } from "react";
 
 import TransitionLink from "@/components/animations/TransitionLink";
-import { Input } from "@/components/form";
+import { Input, PasswordInput } from "@/components/form";
 
 const SignUpPage = () => {
   const [nameValue, setNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorName, setErrorName] = useState(false);
+  const [errorPassword, setErrorPassword] = useState(false);
 
   return (
     <main className="dark:bg-zinc-950 min-h-screen dark:text-white xl:p-8 xl:grid xl:grid-cols-2 gap-8">
@@ -34,17 +36,23 @@ const SignUpPage = () => {
         <form className="mt-12 w-full max-w-[460px]">
           <div className="flex flex-col gap-5 items-start">
             <Input
-              nameValue={nameValue}
-              setNameValue={setNameValue}
-              errorName={errorName}
+              value={nameValue}
+              setValue={setNameValue}
+              error={errorName}
               type="name"
             />
 
             <Input
-              emailValue={emailValue}
-              setEmailValue={setEmailValue}
-              errorEmail={errorEmail}
+              value={emailValue}
+              setValue={setEmailValue}
+              error={errorEmail}
               type="email"
+            />
+
+            <PasswordInput 
+              passwordValue={passwordValue}
+              setPasswordValue={setPasswordValue}
+              errorPassword={errorPassword}
             />
           </div>
         </form>
