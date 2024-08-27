@@ -10,7 +10,7 @@ const Footer = () => {
       <h2 className="text-xl xl:text-2xl font-semibold">Todo App</h2>
 
       <div className="flex gap-3 items-center">
-        <p>Light</p>
+        <button onClick={() => setDarkMode(false)}>Light</button>
 
         <button
           className="relative h-8 w-16 rounded-full bg-white dark:bg-zinc-950"
@@ -25,7 +25,7 @@ const Footer = () => {
           ></div>
         </button>
 
-        <p>Dark</p>
+        <button onClick={() => setDarkMode(true)}>Dark</button>
       </div>
     </footer>
   );
