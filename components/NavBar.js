@@ -6,9 +6,19 @@ const NavBar = () => {
       <h2 className="text-xl xl:text-2xl font-semibold">Todo App</h2>
 
       <nav className="flex items-center gap-4">
-        <Link href="/sign-up" className="px-2 py-1 lg:px-3 hover:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300">Sign Up</Link>
+        <Link
+          href="/sign-up"
+          className="px-2 py-1 lg:px-3 hover:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300"
+        >
+          Sign Up
+        </Link>
 
-        <Link href="/login" className="px-2 py-1 lg:px-3 hover:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300">Login</Link>
+        <Link
+          href="/login"
+          className="px-2 py-1 lg:px-3 hover:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300"
+        >
+          Login
+        </Link>
       </nav>
     </header>
   );
