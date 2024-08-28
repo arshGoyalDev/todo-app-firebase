@@ -16,9 +16,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#2F2963"
-      }
-    }
+        primary: "#5E8C61",
+      },
+    },
   },
   plugins: [],
 };
