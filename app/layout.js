@@ -4,6 +4,8 @@ import "./globals.css";
 
 import ContextContainer from "@/context";
 
+import { PageTransition } from "@/components/animations";
+
 const inter = Inter({ subsets: ["latin"] });
 
 const metadata = {
@@ -15,6 +17,7 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <PageTransition />
         <ContextContainer>{children}</ContextContainer>
       </body>
     </html>

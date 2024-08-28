@@ -7,15 +7,24 @@
 /************************/
 
 body {
-  transition-property: opacity, transform, filter, background;
+  /* transition-property: opacity, transform, filter, background;
   transition-timing-function: ease-in-out;
-  transition-duration: 0.5s;
+  transition-duration: 0.5s; */
 }
 
 /* page transition */
 
-.page-transition {
+/* .page-transition {
   @apply -translate-x-10 bg-black opacity-0 blur-lg;
+} */
+
+.slide-in, .slide-out {
+  @apply scale-y-0 transition-all duration-700;
+}
+
+.animate--slide-in .slide-in,
+.animate--slide-out .slide-out {
+  @apply scale-y-100
 }
 
 /************************/

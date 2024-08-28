@@ -1,4 +1,4 @@
-import TransitionLink from "./animations/TransitionLink";
+import { TransitionLink } from "./animations";
 
 const NavBar = () => {
   return (

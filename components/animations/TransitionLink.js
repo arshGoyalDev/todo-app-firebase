@@ -13,14 +13,13 @@ const TransitionLink = ({ children, href, className }) => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
-  const handleTransition = async (
-    e
-  ) => {
+  const handleTransition = async (e) => {
     e.preventDefault();
 
     const body = document.querySelector("body");
 
-    body?.classList.add("page-transition");
+    body?.classList.add("animate--slide-in");
+    body?.classList.add("animate--slide-out");
 
     await sleep(700);
 
@@ -28,7 +27,8 @@ const TransitionLink = ({ children, href, className }) => {
 
     await sleep(900);
 
-    body?.classList.remove("page-transition");
+    body?.classList.remove("animate--slide-in");
+    body?.classList.remove("animate--slide-out");
   };
 
   return (

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import TransitionLink from "@/components/animations/TransitionLink";
+import {TransitionLink} from "@/components/animations";
 
 import { Input, PasswordInput } from "@/components/form";
 import { GoogleAuthButton } from "@/components/button";

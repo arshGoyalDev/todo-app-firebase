@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import TransitionLink from "@/components/animations/TransitionLink";
+import {TransitionLink} from "@/components/animations";
 
 import { Input, PasswordInput } from "@/components/form";
 import { GoogleAuthButton } from "@/components/button";
@@ -27,10 +27,7 @@ const SignUpPage = () => {
           </h1>
           <p className="text-gray-600 dark:text-zinc-400">
             Already have an account?{" "}
-            <TransitionLink
-              href="/login"
-              className="text-primary font-semibold"
-            >
+            <TransitionLink href="/login" className="text-primary font-semibold">
               Login
             </TransitionLink>
           </p>
