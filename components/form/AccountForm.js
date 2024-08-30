@@ -3,8 +3,15 @@
 import { useState } from "react";
 
 import { Input, PasswordInput } from ".";
+import { useAuth } from "@/context";
+
+import { useRouter } from "next/navigation";
 
 const AccountForm = ({ form }) => {
+  const router = useRouter();
+
+  const { signUp } = useAuth();
+
   const [nameValue, setNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
@@ -14,7 +21,15 @@ const AccountForm = ({ form }) => {
   const [errorPassword, setErrorPassword] = useState(false);
 
   return (
-    <form className="mt-12 w-full max-w-[460px]">
+    <form
+      className="mt-12 w-full max-w-[460px]"
+      onSubmit={(e) => {
+        e.preventDefault();
+        form === "sign-up"
+          ? signUp(nameValue, emailValue, passwordValue, setErrorEmail)
+          : "";
+      }}
+    >
       <div className="flex flex-col gap-5 items-start">
         {form === "sign-up" && (
           <Input
