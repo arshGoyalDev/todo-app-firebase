@@ -1,19 +1,14 @@
-"use client";
+import { TransitionLink } from "@/components/animations";
 
-import { useState } from "react";
-
-import {TransitionLink} from "@/components/animations";
-
-import { Input, PasswordInput } from "@/components/form";
+import { AccountForm } from "@/components/form";
 import { GoogleAuthButton } from "@/components/button";
 
+const metadata = {
+  title: "Login | Todo App",
+  description: "Login into todo app. Never miss your important tasks",
+};
+
 const LoginPage = () => {
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-
-  const [errorEmail, setErrorEmail] = useState(false);
-  const [errorPassword, setErrorPassword] = useState(false);
-
   return (
     <main className="dark:bg-zinc-950 min-h-screen dark:text-white xl:p-8 grid place-content-center xl:place-content-stretch xl:grid-cols-2 gap-8">
       <section className="min-h-screen px-8 xl:px-0 xl:min-h-full flex flex-col items-center w-screen xl:w-full justify-center">
@@ -35,25 +30,7 @@ const LoginPage = () => {
             </TransitionLink>
           </p>
         </div>
-        <form className="mt-12 w-full max-w-[460px]">
-          <div className="flex flex-col gap-5 items-start">
-            <Input
-              value={emailValue}
-              setValue={setEmailValue}
-              error={errorEmail}
-              type="email"
-            />
-
-            <PasswordInput
-              passwordValue={passwordValue}
-              setPasswordValue={setPasswordValue}
-              errorPassword={errorPassword}
-            />
-            <button className="text-white mt-10 w-full py-[14px] font-semibold bg-primary rounded-xl hover:bg-gray-400 hover:text-black dark:hover:text-white hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-300">
-              Login
-            </button>
-          </div>
-        </form>
+        <AccountForm form="login" />
         <div className="flex gap-2 items-center justify-stretch w-full max-w-[460px] mt-12 mb-8">
           <span className="h-1 w-full bg-gray-100 dark:bg-zinc-800 rounded-full"></span>
           <p className="w-full text-nowrap text-center font-medium">
@@ -69,4 +46,6 @@ const LoginPage = () => {
     </main>
   );
 };
+
+export { metadata };
 export default LoginPage;
