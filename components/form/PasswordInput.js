@@ -23,11 +23,12 @@ const PasswordInput = ({ passwordValue, setPasswordValue, errorPassword }) => {
 
       {errorPassword && <p className="text-red-500 mt-3">{errorPassword}</p>}
 
-      <div
+      <button
         className={`password-toggle ${
           viewPassword && "view"
-        } absolute top-[13px] right-4 stroke-black dark:stroke-white`}
-        onClick={() => {
+        } absolute top-[13px] right-4 stroke-black dark:stroke-white focus:outline-0 border-[1px] border-transparent focus:border-black dark:focus:border-white rounded-lg`}
+        onClick={(e) => {
+          e.preventDefault();
           viewPassword ? setViewPassword(false) : setViewPassword(true);
         }}
       >
@@ -51,7 +52,7 @@ const PasswordInput = ({ passwordValue, setPasswordValue, errorPassword }) => {
             strokeLinejoin="round"
           />
         </svg>
-      </div>
+      </button>
     </div>
   );
 };

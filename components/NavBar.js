@@ -13,12 +13,20 @@ const NavBar = () => {
 
       <nav className="flex items-center gap-4 font-medium">
         {userStatus ? (
-          <button
-            onClick={logout}
-            className="px-2 py-1 lg:px-3 hover:bg-gray-200 hover:dark:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300"
-          >
-            Logout
-          </button>
+          <>
+            <TransitionLink
+              href="/app"
+              className="px-2 py-1 lg:px-3 hover:bg-gray-200 hover:dark:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300"
+            >
+              App
+            </TransitionLink>
+            <button
+              onClick={logout}
+              className="px-2 py-1 lg:px-3 hover:bg-gray-200 hover:dark:bg-zinc-800 bg-opacity-10 rounded-lg transition-all duration-300"
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <TransitionLink
