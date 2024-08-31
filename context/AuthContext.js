@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import { auth, db } from "../config/firebase";
+
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
@@ -93,18 +94,47 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const login = async (email, password, setErrorEmail, setErrorPassword) => {
+    try {
+      console.log(email, password);
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+
+      setErrorEmail(false);
+      setErrorPassword(false);
+
+      localStorage.setItem("user", userCred.user.uid);
+      getUserCred(userCred.user.uid);
+      setUserStatus(true);
+
+      router.push("/");
+      return true;
+    } catch (error) {
+      console.log(error.message);
+      if (error.message.includes("invalid-credential")) {
+        setErrorEmail(true);
+        setErrorPassword("Either Email or Password is incorrect");
+      } else if (error.message.includes("internal")) {
+        setErrorEmail("Internal Error");
+        setErrorPassword("Internal Error");
+      }
+
+      return false;
+    }
+  };
+
   const logout = async () => {
     await signOut(auth);
 
     setUserStatus(false);
     setUser(null);
+    setUserDetails(null);
 
     localStorage.removeItem("user");
   };
 
   return (
     <AuthContext.Provider
-      value={{ signUp, logout, user, userDetails, userStatus }}
+      value={{ signUp, login, logout, user, userDetails, userStatus }}
     >
       {children}
     </AuthContext.Provider>

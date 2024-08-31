@@ -8,15 +8,12 @@ import { useAuth } from "@/context";
 import { useRouter } from "next/navigation";
 
 const AccountForm = ({ form }) => {
-  const router = useRouter();
-
-  const { signUp } = useAuth();
+  const { signUp, login } = useAuth();
 
   const [nameValue, setNameValue] = useState("");
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
-  const [errorName, setErrorName] = useState(false);
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
 
@@ -27,7 +24,7 @@ const AccountForm = ({ form }) => {
         e.preventDefault();
         form === "sign-up"
           ? signUp(nameValue, emailValue, passwordValue, setErrorEmail)
-          : "";
+          : login(emailValue, passwordValue, setErrorEmail, setErrorPassword);
       }}
     >
       <div className="flex flex-col gap-5 items-start">
@@ -35,7 +32,7 @@ const AccountForm = ({ form }) => {
           <Input
             value={nameValue}
             setValue={setNameValue}
-            error={errorName}
+            error={false}
             type="name"
           />
         )}

@@ -14,16 +14,23 @@ const PasswordInput = ({ passwordValue, setPasswordValue, errorPassword }) => {
         value={passwordValue}
         onChange={(e) => setPasswordValue(e.target.value)}
         placeholder="Password"
-        className={` w-full py-3 px-5 bg-gray-50 dark:bg-zinc-900 border-2 rounded-lg ${
+        className={` w-full py-3 px-5 bg-gray-50 dark:bg-zinc-900 border-2 rounded-lg placeholder:dark:text-zinc-600 ${
           errorPassword
-            ? "border-red-700 placeholder:text-red-600"
-            : "border-gray-200 w-full dark:border-zinc-800 placeholder:dark:text-zinc-600"
+            ? "border-red-500"
+            : "border-gray-200 w-full dark:border-zinc-800"
         }`}
       />
 
-      <div className={`password-toggle ${viewPassword && "view"} absolute top-[13px] right-4 stroke-black dark:stroke-white`} onClick={() => {
-        viewPassword ? setViewPassword(false) : setViewPassword(true)
-      }}>
+      {errorPassword && <p className="text-red-500 mt-3">{errorPassword}</p>}
+
+      <div
+        className={`password-toggle ${
+          viewPassword && "view"
+        } absolute top-[13px] right-4 stroke-black dark:stroke-white`}
+        onClick={() => {
+          viewPassword ? setViewPassword(false) : setViewPassword(true);
+        }}
+      >
         <svg
           width="24"
           height="24"
