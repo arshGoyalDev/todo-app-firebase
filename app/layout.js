@@ -15,7 +15,7 @@ const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className={josefinSlab.className}>
+      <body className={josefinSlab.className + " dark:bg-zinc-950 dark:text-white"}>
         <ContextContainer>{children}</ContextContainer>
       </body>
     </html>

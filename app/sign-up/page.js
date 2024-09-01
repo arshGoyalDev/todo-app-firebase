@@ -9,7 +9,7 @@ const metadata = {
 
 const SignUpPage = () => {
   return (
-    <main className="dark:bg-zinc-950 min-h-screen dark:text-white xl:p-8 grid place-content-center xl:place-content-stretch xl:grid-cols-2 gap-8">
+    <main className="min-h-screen xl:p-8 grid place-content-center xl:place-content-stretch xl:grid-cols-2 gap-8">
       <HomeButton form="sign-up" />
 
       <section className="hidden xl:block min-h-full rounded-xl bg-gray-200 dark:bg-zinc-800"></section>
