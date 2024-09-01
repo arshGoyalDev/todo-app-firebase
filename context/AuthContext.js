@@ -36,11 +36,6 @@ const AuthProvider = ({ children }) => {
   const [userStatus, setUserStatus] = useState(false);
 
   useEffect(() => {
-    console.log(user);
-    console.log(userDetails);
-  }, [user, userDetails]);
-
-  useEffect(() => {
     if (localStorage.getItem("user")) {
       setUser(localStorage.getItem("user"));
       setUserStatus(true);
@@ -71,7 +66,6 @@ const AuthProvider = ({ children }) => {
 
   const signUp = async (name, email, password, setErrorEmail) => {
     try {
-      console.log(name, email, password);
       const userCred = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -96,7 +90,6 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password, setErrorEmail, setErrorPassword) => {
     try {
-      console.log(email, password);
       const userCred = await signInWithEmailAndPassword(auth, email, password);
 
       setErrorEmail(false);
@@ -145,7 +138,6 @@ const AuthProvider = ({ children }) => {
         return true;
       });
     } catch (error) {
-      console.log(error.message);
       return false;
     }
   };
