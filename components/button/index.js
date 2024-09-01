@@ -1,4 +1,5 @@
 import GoogleAuthButton from "./GoogleAuthButton";
 import ToggleThemeButton from "./ToggleThemeButton";
+import HomeButton from "./HomeButton";
 
-export { GoogleAuthButton, ToggleThemeButton };
+export { GoogleAuthButton, ToggleThemeButton, HomeButton };

@@ -1,7 +1,6 @@
-import { TransitionLink } from "@/components/animations";
-
 import { AccountForm } from "@/components/form";
-import { GoogleAuthButton } from "@/components/button";
+import { GoogleAuthButton, HomeButton } from "@/components/button";
+import { TransitionLink } from "@/components/animations";
 
 const metadata = {
   title: "Login | Todo App",
@@ -11,6 +10,8 @@ const metadata = {
 const LoginPage = () => {
   return (
     <main className="dark:bg-zinc-950 min-h-screen dark:text-white xl:p-8 grid place-content-center xl:place-content-stretch xl:grid-cols-2 gap-8">
+      <HomeButton form="login" />
+
       <section className="min-h-screen px-8 xl:px-0 xl:min-h-full flex flex-col items-center w-screen xl:w-full justify-center">
         <div className="grid gap-4 w-full max-w-[460px]">
           <h1 className="flex flex-col gap-2 font-semibold text-3xl xl:text-5xl 2xl:text-5xl">
