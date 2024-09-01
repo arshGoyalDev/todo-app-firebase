@@ -38,7 +38,7 @@ const SignUpPage = () => {
           <span className="h-1 w-full bg-gray-100 dark:bg-zinc-800 rounded-full"></span>
         </div>
 
-        <GoogleAuthButton />
+        <GoogleAuthButton form="sign-up" />
       </section>
     </main>
   );

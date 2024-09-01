@@ -109,7 +109,6 @@ const AuthProvider = ({ children }) => {
       router.push("/");
       return true;
     } catch (error) {
-      console.log(error.message);
       if (error.message.includes("invalid-credential")) {
         setErrorEmail(true);
         setErrorPassword("Either Email or Password is incorrect");
@@ -118,6 +117,35 @@ const AuthProvider = ({ children }) => {
         setErrorPassword("Internal Error");
       }
 
+      return false;
+    }
+  };
+
+  const googleAuth = async (form, setLoading) => {
+    try {
+      const provider = new GoogleAuthProvider();
+
+      signInWithPopup(auth, provider).then(async (userCred) => {
+        localStorage.setItem("user", userCred.user.uid);
+
+        if (form === "sign-up") {
+          await createUserDoc(
+            userCred.user.uid,
+            userCred.user.displayName,
+            userCred.user.email
+          );
+        }
+
+        getUserCred(userCred.user.uid);
+
+        setLoading(false);
+        setUserStatus(true);
+        router.push("/");
+
+        return true;
+      });
+    } catch (error) {
+      console.log(error.message);
       return false;
     }
   };
@@ -134,7 +162,15 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ signUp, login, logout, user, userDetails, userStatus }}
+      value={{
+        signUp,
+        login,
+        logout,
+        googleAuth,
+        user,
+        userDetails,
+        userStatus,
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -39,7 +39,7 @@ const LoginPage = () => {
           <span className="h-1 w-full bg-gray-100 dark:bg-zinc-800 rounded-full"></span>
         </div>
 
-        <GoogleAuthButton />
+        <GoogleAuthButton form="login" />
       </section>
 
       <section className="hidden xl:block min-h-full rounded-xl bg-gray-200 dark:bg-zinc-800"></section>
