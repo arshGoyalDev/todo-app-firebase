@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 import { useAuth } from "@/context";
+import { ThreeDots } from "../loaders";
 
 const GoogleAuthButton = ({ form }) => {
   const { googleAuth } = useAuth();
@@ -18,7 +19,9 @@ const GoogleAuthButton = ({ form }) => {
       className="flex justify-center gap-3 items-center w-full max-w-[460px] py-3 border-2 border-gray-300 dark:border-zinc-800 rounded-xl hover:bg-gray-400 hover:text-black dark:hover:text-white hover:border-transparent hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-300"
     >
       {loading ? (
-        <div className="w-5 h-5 border-t-2 border-l-2 border-white border-solid animate-spin rounded-full"></div>
+        <>
+          <ThreeDots />
+        </>
       ) : (
         <>
           <span className=" dark:fill-white">

@@ -1,0 +1,26 @@
+/************************/
+/* password */
+/************************/
+
+.password-toggle::before {
+  content: "";
+  @apply w-8 h-[2px] rounded-full bg-black dark:bg-white -rotate-45 absolute  -right-0 scale-x-0 transition-all duration-300 origin-right;
+}
+
+.password-toggle.view::before {
+  @apply scale-x-100;
+}
+
+/*************************/
+/* loaders */
+/*************************/
+
+/* three dots */
+
+.three-dots div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.three-dots div:nth-child(3) {
+  animation-delay: 0.6s;
+}

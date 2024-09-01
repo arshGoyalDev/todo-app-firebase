@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 
-import "../styles/globals.css";
+import "@/styles/globals.css";
+import "@/styles/components.css"
 
 import ContextContainer from "@/context";
 
