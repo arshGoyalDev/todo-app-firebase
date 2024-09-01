@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
+import { Josefin_Slab } from "next/font/google";
 
 import "@/styles/globals.css";
 import "@/styles/components.css"
 
 import ContextContainer from "@/context";
 
-const inter = Inter({ subsets: ["latin"] });
+const josefinSlab = Josefin_Slab({ subsets: ["latin"] });
 
 const metadata = {
   title: "Todo App",
@@ -15,7 +15,7 @@ const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={josefinSlab.className}>
         <ContextContainer>{children}</ContextContainer>
       </body>
     </html>
