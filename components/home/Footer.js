@@ -1,6 +1,6 @@
 "use client";
 
-import { ToggleThemeButton } from "./button";
+import { ToggleThemeButton } from "@/components/button";
 
 const Footer = () => {
 

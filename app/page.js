@@ -1,10 +1,12 @@
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
+import { NavBar, Footer, HorizontalScroll } from "@/components/home";
 
 const HomePage = () => {
   return (
     <main className="min-h-screen">
       <NavBar />
+
+      <HorizontalScroll />
+
       <Footer />
     </main>
   );
