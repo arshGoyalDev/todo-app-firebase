@@ -78,7 +78,7 @@ const AuthProvider = ({ children }) => {
       getUserCred(userCred.user.uid);
       setUserStatus(true);
 
-      router.push("/");
+      router.push("/app");
       return true;
     } catch (error) {
       if (error.message.includes("email")) {
@@ -99,7 +99,7 @@ const AuthProvider = ({ children }) => {
       getUserCred(userCred.user.uid);
       setUserStatus(true);
 
-      router.push("/");
+      router.push("/app");
       return true;
     } catch (error) {
       if (error.message.includes("invalid-credential")) {
