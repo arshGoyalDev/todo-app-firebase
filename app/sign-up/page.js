@@ -23,7 +23,7 @@ const SignUpPage = () => {
             Already have an account?{" "}
             <TransitionLink
               href="/login"
-              className="text-primary font-semibold"
+              className="text-primaryLight dark:text-primaryDark font-bold"
             >
               Login
             </TransitionLink>

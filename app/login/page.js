@@ -25,7 +25,7 @@ const LoginPage = () => {
             }
             <TransitionLink
               href="/sign-up"
-              className="text-primary font-semibold"
+              className="text-primaryLight dark:text-primaryDark font-bold"
             >
               Sign Up
             </TransitionLink>

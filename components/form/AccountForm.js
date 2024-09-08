@@ -49,7 +49,7 @@ const AccountForm = ({ form }) => {
           setPasswordValue={setPasswordValue}
           errorPassword={errorPassword}
         />
-        <button className="text-white mt-10 w-full py-[14px] font-semibold bg-primary rounded-xl hover:bg-gray-400 hover:text-black dark:hover:text-white hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-300">
+        <button className="font-bold text-white dark:text-black mt-10 w-full py-[14px] bg-primaryLight dark:bg-primaryDark rounded-xl hover:bg-gray-400 hover:text-black dark:hover:text-white hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-300">
           {form === "login" ? "Login" : "Sign Up"}
         </button>
       </div>

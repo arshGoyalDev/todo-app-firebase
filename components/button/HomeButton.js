@@ -25,7 +25,7 @@ const HomeButton = ({ form }) => {
           />
         </svg>
       </span>
-      <span className="h-5">Home</span>
+      <span className="h-5 font-bold">Home</span>
     </TransitionLink>
   );
 };
