@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
-
-const SearchBtn = () => {
-  const [searchDialogVisible, setSearchDialogVisible] = useState(false);
-
+const SearchBtn = ({ searchBoxVisible, setSearchBoxVisible }) => {
   return (
-    <button className="p-1 flex justify-center items-center rounded-full">
+    <button
+      onClick={() => {
+        searchBoxVisible
+          ? setSearchBoxVisible(false)
+          : setSearchBoxVisible(true);
+      }}
+      className="p-1 flex justify-center items-center rounded-full"
+    >
       <span className="stroke-black dark:stroke-white">
         <svg
           width="28"
@@ -26,6 +29,7 @@ const SearchBtn = () => {
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
+            f
           />
         </svg>
       </span>

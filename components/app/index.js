@@ -1,3 +1,3 @@
 import BottomNav from "./BottomNav";
 
-export {BottomNav}
+export { BottomNav };
