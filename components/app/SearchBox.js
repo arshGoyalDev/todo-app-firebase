@@ -4,7 +4,7 @@ const SearchBox = () => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <div className="absolute top-[-240px] w-[90vw] sm:w-[360px] p-4 pb-0 bg-gray-50 dark:bg-zinc-900 border-2 border-gray-200 dark:border-zinc-800 rounded-xl">
+    <div className="animate-in absolute top-[-240px] w-[90vw] sm:w-[360px] p-4 pb-0 bg-gray-50 dark:bg-zinc-900 border-2 border-gray-200 dark:border-zinc-800 rounded-xl">
       <div className="relative px-2 flex flex-row-reverse items-center w-full bg-gray-100 dark:bg-zinc-800 rounded-lg">
         <input
           type="text"

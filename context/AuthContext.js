@@ -1,8 +1,10 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import {createContext, useContext, useState, useEffect} from "react";
 
-import { auth, db } from "../config/firebase";
+import {auth, db} from "../config/firebase";
+
+import {setCookie, getCookie, hasCookie, deleteCookie} from 'cookies-next';
 
 import {
   createUserWithEmailAndPassword,
@@ -20,15 +22,13 @@ import {
   collection,
 } from "firebase/firestore";
 
-import { uploadBytes, ref } from "firebase/storage";
-
-import { useRouter } from "next/navigation";
+import {useRouter} from "next/navigation";
 
 const AuthContext = createContext();
 
 const useAuth = () => useContext(AuthContext);
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
   const router = useRouter();
 
   const [user, setUser] = useState();
@@ -36,10 +36,14 @@ const AuthProvider = ({ children }) => {
   const [userStatus, setUserStatus] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("user")) {
-      setUser(localStorage.getItem("user"));
+    const cookie = getCookie("userUid");
+
+    if (hasCookie("userUid")) {
+      setUser(cookie);
       setUserStatus(true);
-      getUserCred(localStorage.getItem("user"));
+      getUserCred(cookie);
+    } else {
+      console.log("No User");
     }
   }, []);
 
@@ -48,7 +52,7 @@ const AuthProvider = ({ children }) => {
     setUser(uid);
 
     onSnapshot(userRef, (fetchedData) => {
-      setUserDetails({ ...fetchedData.data() });
+      setUserDetails({...fetchedData.data()});
     });
   };
 
@@ -74,7 +78,11 @@ const AuthProvider = ({ children }) => {
 
       setErrorEmail(false);
       await createUserDoc(userCred.user.uid, name, email);
-      localStorage.setItem("user", userCred.user.uid);
+
+      setCookie("userUid", userCred.user.uid, {
+        path: '/',
+      });
+
       getUserCred(userCred.user.uid);
       setUserStatus(true);
 
@@ -95,7 +103,10 @@ const AuthProvider = ({ children }) => {
       setErrorEmail(false);
       setErrorPassword(false);
 
-      localStorage.setItem("user", userCred.user.uid);
+      setCookie("userUid", userCred.user.uid, {
+        path: '/',
+      });
+
       getUserCred(userCred.user.uid);
       setUserStatus(true);
 
@@ -119,7 +130,10 @@ const AuthProvider = ({ children }) => {
       const provider = new GoogleAuthProvider();
 
       signInWithPopup(auth, provider).then(async (userCred) => {
-        localStorage.setItem("user", userCred.user.uid);
+
+        setCookie("userUid", userCred.user.uid, {
+          path: '/',
+        });
 
         if (form === "sign-up") {
           await createUserDoc(
@@ -149,7 +163,7 @@ const AuthProvider = ({ children }) => {
     setUser(null);
     setUserDetails(null);
 
-    localStorage.removeItem("user");
+    deleteCookie("userUid");
   };
 
   return (
@@ -169,4 +183,4 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export { useAuth, AuthProvider };
+export {useAuth, AuthProvider};
