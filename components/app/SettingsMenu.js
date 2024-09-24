@@ -1,6 +1,12 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 import { useAuth } from "@/context";
 
-const SettingsMenu = () => {
+const SettingsMenu = ({ setSettingsMenuVisible }) => {
+  const router = useRouter();
+
   const { userDetails, logout } = useAuth();
 
   return (
@@ -32,7 +38,13 @@ const SettingsMenu = () => {
         </span>
       </button>
 
-      <button className="w-full flex justify-between items-center py-3 px-4 border-b-2 border-gray-200 dark:border-zinc-800">
+      <button
+        className="w-full flex justify-between items-center py-3 px-4 border-b-2 border-gray-200 dark:border-zinc-800"
+        onClick={() => {
+          setSettingsMenuVisible(false);
+          router.push("/app?settings=true");
+        }}
+      >
         Settings
         <span className="stroke-black dark:stroke-white">
           <svg

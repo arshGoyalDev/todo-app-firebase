@@ -70,7 +70,7 @@ const BottomNav = () => {
         setSettingsMenuVisible={setSettingsMenuVisible}
       />
 
-      {settingsMenuVisible && <SettingsMenu />}
+      {settingsMenuVisible && <SettingsMenu setSettingsMenuVisible={setSettingsMenuVisible} />}
 
       <button className="p-1 flex justify-center items-center rounded-full">
         <span className="stroke-black dark:stroke-white">
