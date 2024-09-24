@@ -12,3 +12,33 @@ input:active,
 input:focus {
   outline: 0;
 }
+
+/* scrollbar */
+
+/* firebox based browsers */
+
+@supports not selector(::-webkit-scrollbar) {
+  body * {
+    scrollbar-color: #d1d5db transparent;
+    scrollbar-width: thin;
+  }
+
+  body.dark * {
+    scrollbar-color: #3f3f46 transparent;
+  }
+}
+
+/* chromium based browsers */
+
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+body *::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 10px;
+}
+
+body.dark *::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
