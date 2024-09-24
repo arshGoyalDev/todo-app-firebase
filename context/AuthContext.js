@@ -1,10 +1,10 @@
 "use client";
 
-import {createContext, useContext, useState, useEffect} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-import {auth, db} from "../config/firebase";
+import { auth, db } from "../config/firebase";
 
-import {setCookie, getCookie, hasCookie, deleteCookie} from 'cookies-next';
+import { setCookie, getCookie, hasCookie, deleteCookie } from "cookies-next";
 
 import {
   createUserWithEmailAndPassword,
@@ -22,13 +22,13 @@ import {
   collection,
 } from "firebase/firestore";
 
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
 const useAuth = () => useContext(AuthContext);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
   const router = useRouter();
 
   const [user, setUser] = useState();
@@ -52,7 +52,7 @@ const AuthProvider = ({children}) => {
     setUser(uid);
 
     onSnapshot(userRef, (fetchedData) => {
-      setUserDetails({...fetchedData.data()});
+      setUserDetails({ ...fetchedData.data() });
     });
   };
 
@@ -80,7 +80,7 @@ const AuthProvider = ({children}) => {
       await createUserDoc(userCred.user.uid, name, email);
 
       setCookie("userUid", userCred.user.uid, {
-        path: '/',
+        path: "/",
       });
 
       getUserCred(userCred.user.uid);
@@ -104,7 +104,7 @@ const AuthProvider = ({children}) => {
       setErrorPassword(false);
 
       setCookie("userUid", userCred.user.uid, {
-        path: '/',
+        path: "/",
       });
 
       getUserCred(userCred.user.uid);
@@ -130,9 +130,8 @@ const AuthProvider = ({children}) => {
       const provider = new GoogleAuthProvider();
 
       signInWithPopup(auth, provider).then(async (userCred) => {
-
         setCookie("userUid", userCred.user.uid, {
-          path: '/',
+          path: "/",
         });
 
         if (form === "sign-up") {
@@ -159,6 +158,8 @@ const AuthProvider = ({children}) => {
   const logout = async () => {
     await signOut(auth);
 
+    router.push("/");
+
     setUserStatus(false);
     setUser(null);
     setUserDetails(null);
@@ -183,4 +184,4 @@ const AuthProvider = ({children}) => {
   );
 };
 
-export {useAuth, AuthProvider};
+export { useAuth, AuthProvider };

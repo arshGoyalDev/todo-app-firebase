@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 
 import { AddTaskBtn, SearchBtn, SettingsBtn } from "../button";
+
 import SearchBox from "./SearchBox";
+import SettingsMenu from './SettingsMenu';
 
 const BottomNav = () => {
   const [searchBoxVisible, setSearchBoxVisible] = useState(false);
+  const [settingsMenuVisible, setSettingsMenuVisible] = useState(false);
 
   return (
     <nav className="z-50 w-[95vw] md:w-fit fixed bottom-5 left-1/2 -translate-x-1/2 flex md:gap-10 justify-between items-center py-3 px-4 bg-gray-50 dark:bg-zinc-900 border-2 border-gray-200 dark:border-zinc-800 rounded-xl">
@@ -59,8 +62,16 @@ const BottomNav = () => {
         setSearchBoxVisible={setSearchBoxVisible}
       />
       {searchBoxVisible && <SearchBox />}
+
       <AddTaskBtn />
-      <SettingsBtn />
+
+      <SettingsBtn
+        settingsMenuVisible={settingsMenuVisible}
+        setSettingsMenuVisible={setSettingsMenuVisible}
+      />
+
+      {settingsMenuVisible && <SettingsMenu />}
+
       <button className="p-1 flex justify-center items-center rounded-full">
         <span className="stroke-black dark:stroke-white">
           <svg

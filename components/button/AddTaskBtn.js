@@ -1,3 +1,5 @@
+"use client";
+
 const AddTaskBtn = () => {
   return (
     <button className="p-1 flex justify-center items-center rounded-full bg-primaryLight dark:bg-primaryDark">

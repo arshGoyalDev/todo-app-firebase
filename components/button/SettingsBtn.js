@@ -1,6 +1,13 @@
-const SettingsBtn = () => {
+const SettingsBtn = ({ settingsMenuVisible, setSettingsMenuVisible }) => {
   return (
-    <button className="p-1 flex justify-center items-center rounded-full">
+    <button
+      className="p-1 flex justify-center items-center rounded-full"
+      onClick={() => {
+        settingsMenuVisible
+          ? setSettingsMenuVisible(false)
+          : setSettingsMenuVisible(true);
+      }}
+    >
       <span className="stroke-black dark:stroke-white">
         <svg
           width="32"
