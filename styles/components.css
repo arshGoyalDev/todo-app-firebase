@@ -39,13 +39,18 @@
 /* animate in */
 /*************************/
 
-.animate-in {
-  animation: animate-in 0.5s;
+.search-box {
+  animation: search-box-in 0.5s;
 }
 
-@keyframes animate-in {
+.settings-menu {
+  animation: settings-menu-in 0.5s;
+
+}
+
+@keyframes search-box-in {
   0% {
-    top: -100px;
+    top: -60px;
     left: -60px;
     scale: 0;
   }
@@ -53,5 +58,16 @@
   100% {
     scale: 1;
     left: 15px;
+  }
+}
+
+@keyframes settings-menu-in {
+  0% {
+    top: -60px;
+    scale: 0;
+  }
+  
+  100% {
+    scale: 1;
   }
 }
