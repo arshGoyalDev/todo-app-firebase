@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "cookies-next": "^4.2.1",
+    "dayjs": "^1.11.13",
     "firebase": "^10.13.0",
     "gsap": "^3.12.5",
     "jose": "^5.9.2",
