@@ -1,8 +1,13 @@
 "use client";
 
+import Link from "next/link";
+
 const AddTaskBtn = () => {
   return (
-    <button className="p-1 flex justify-center items-center rounded-full bg-primaryLight dark:bg-primaryDark">
+    <Link
+      href="/app?add-task=true"
+      className="p-1 flex justify-center items-center rounded-full bg-primaryLight dark:bg-primaryDark"
+    >
       <span className="stroke-white dark:stroke-black">
         <svg
           width="32"
@@ -25,7 +30,7 @@ const AddTaskBtn = () => {
           />
         </svg>
       </span>
-    </button>
+    </Link>
   );
 };
 export default AddTaskBtn;
