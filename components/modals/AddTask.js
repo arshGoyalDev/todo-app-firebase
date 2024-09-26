@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Link from "next/link";
 
-import { PrioritySelector } from "../task";
+import dayjs from "dayjs";
+
+import { DateSelector, PrioritySelector } from "../task";
 
 const AddTask = () => {
   const [taskName, setTaskName] = useState("");
   const [taskDescrip, setTaskDescrip] = useState("");
   const [priority, setPriority] = useState(0);
+  const [dueDate, setDueDate] = useState(dayjs());
 
   return (
     <div className="w-full sm:max-w-[600px] bg-gray-100 dark:bg-zinc-950 border-2 border-gray-200 dark:border-zinc-800 rounded-t-xl md:rounded-xl">
@@ -67,7 +70,8 @@ const AddTask = () => {
         />
 
         <div className="pt-2 flex gap-3">
-          <PrioritySelector priority={priority} setPriority={setPriority}  />
+          <DateSelector dueDate={dueDate} setDueDate={setDueDate} />
+          <PrioritySelector priority={priority} setPriority={setPriority} />
         </div>
       </div>
     </div>
