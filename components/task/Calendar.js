@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 
 import { generateDate, months } from "@/utils/calendar";
 
-const Calendar = ({dueDate, setDueDate, setMenuVisible}) => {
+const Calendar = ({ dueDate, setDueDate, setMenuVisible }) => {
   const days = ["S", "M", "T", "W", "T", "F", "S"];
 
   const currentDate = dayjs();
@@ -116,8 +116,14 @@ const Calendar = ({dueDate, setDueDate, setMenuVisible}) => {
               >
                 <h1
                   className={`
-                        ${currentMonth ? "" : "text-gray-400 dark:text-zinc-400"}
-                        ${today ? "bg-primaryLight dark:bg-primaryDark text-white dark:text-black" : ""}
+                        ${
+                          currentMonth ? "" : "text-gray-400 dark:text-zinc-400"
+                        }
+                        ${
+                          today
+                            ? "bg-primaryLight dark:bg-primaryDark text-white dark:text-black"
+                            : ""
+                        }
                         ${
                           dueDate.toDate().toDateString() ===
                           date.toDate().toDateString()
@@ -127,8 +133,10 @@ const Calendar = ({dueDate, setDueDate, setMenuVisible}) => {
                         " h-8 w-8 rounded-lg grid place-content-center hover:bg-gray-500 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all cursor-pointer select-none"
                       `}
                   onClick={() => {
-                    setDueDate(date);
-                    setMenuVisible(false);
+                    if (date.toDate() >= currentDate) {
+                      setDueDate(date);
+                      setMenuVisible(false);
+                    }
                   }}
                 >
                   {date.date()}
