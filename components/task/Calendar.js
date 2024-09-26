@@ -149,4 +149,5 @@ const Calendar = ({ dueDate, setDueDate, setMenuVisible }) => {
     </div>
   );
 };
+
 export default Calendar;
