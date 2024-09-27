@@ -5,11 +5,6 @@ import { useState } from "react";
 const PrioritySelector = ({ priority, setPriority }) => {
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const changePriority = (val) => {
-    setPriority(val);
-    setMenuVisible(false);
-  };
-
   const priorityData = [
     {
       id: 1,
@@ -64,12 +59,15 @@ const PrioritySelector = ({ priority, setPriority }) => {
       </button>
 
       {menuVisible && (
-        <div className="absolute -bottom-10 -right-40 w-36 flex-col bg-gray-100 dark:bg-zinc-900 border-2 border-gray-200 dark:border-zinc-800 rounded-xl overflow-hidden">
+        <div className="absolute -bottom-10 -right-16 md:-right-40 w-36 flex-col bg-gray-100 dark:bg-zinc-900 border-2 border-gray-200 dark:border-zinc-800 rounded-xl overflow-hidden">
           {priorityData.map((priorityEl) => {
             return (
               <button
                 key={priorityEl.id}
-                onClick={() => changePriority(priorityEl.id)}
+                onClick={() => {
+                  setPriority(priorityEl.id);
+                  setMenuVisible(false);              
+                }}
                 className={`w-full flex items-center justify-between py-2 px-5 hover:bg-gray-200 hover:dark:bg-zinc-800 hover:bg-opacity-10 ${priorityEl.id !== 3 && "border-b-2"} border-gray-200 dark:border-zinc-800`}
               >
                 Priority {priorityEl.id}
