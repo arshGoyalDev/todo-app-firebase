@@ -8,7 +8,11 @@ import dayjs from "dayjs";
 
 import { DateSelector, PrioritySelector, ProjectSelector } from "../task";
 
+import { useApp } from "@/context";
+
 const AddTask = () => {
+  const {addTask} = useApp();
+
   const [taskName, setTaskName] = useState("");
   const [taskDescrip, setTaskDescrip] = useState("");
   const [priority, setPriority] = useState(0);
@@ -78,7 +82,9 @@ const AddTask = () => {
 
       <div className="flex justify-between items-center py-3 px-6 border-t-2 border-gray-200 dark:border-zinc-800">
         <ProjectSelector project={project} setProject={setProject} />
-        <button className="font-semibold py-2 px-3 bg-primaryLight dark:bg-primaryDark text-white hover:text-black dark:text-black dark:hover:text-white hover:bg-gray-200 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-200 rounded-lg">
+        <button onClick={() => {
+          addTask(taskName, taskDescrip, dueDate, priority, project);          
+        }} className="font-semibold py-2 px-3 bg-primaryLight dark:bg-primaryDark text-white hover:text-black dark:text-black dark:hover:text-white hover:bg-gray-200 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-200 rounded-lg">
           Add Task
         </button>
       </div>
