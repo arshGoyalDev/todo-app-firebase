@@ -6,13 +6,14 @@ import Link from "next/link";
 
 import dayjs from "dayjs";
 
-import { DateSelector, PrioritySelector } from "../task";
+import { DateSelector, PrioritySelector, ProjectSelector } from "../task";
 
 const AddTask = () => {
   const [taskName, setTaskName] = useState("");
   const [taskDescrip, setTaskDescrip] = useState("");
   const [priority, setPriority] = useState(0);
   const [dueDate, setDueDate] = useState(dayjs());
+  const [project, setProject] = useState("inbox");
 
   return (
     <div className="w-full sm:max-w-[600px] bg-gray-100 dark:bg-zinc-950 border-2 border-gray-200 dark:border-zinc-800 rounded-t-xl md:rounded-xl">
@@ -73,6 +74,13 @@ const AddTask = () => {
           <DateSelector dueDate={dueDate} setDueDate={setDueDate} />
           <PrioritySelector priority={priority} setPriority={setPriority} />
         </div>
+      </div>
+
+      <div className="flex justify-between items-center py-3 px-6 border-t-2 border-gray-200 dark:border-zinc-800">
+        <ProjectSelector project={project} setProject={setProject} />
+        <button className="font-semibold py-2 px-3 bg-primaryLight dark:bg-primaryDark text-white hover:text-black dark:text-black dark:hover:text-white hover:bg-gray-200 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-200 rounded-lg">
+          Add Task
+        </button>
       </div>
     </div>
   );
