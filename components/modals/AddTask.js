@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import dayjs from "dayjs";
 
@@ -11,13 +12,25 @@ import { DateSelector, PrioritySelector, ProjectSelector } from "../task";
 import { useApp } from "@/context";
 
 const AddTask = () => {
-  const {addTask} = useApp();
+  const { addTask } = useApp();
+
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const [taskName, setTaskName] = useState("");
   const [taskDescrip, setTaskDescrip] = useState("");
   const [priority, setPriority] = useState(0);
   const [dueDate, setDueDate] = useState(dayjs());
   const [project, setProject] = useState("inbox");
+
+  const handleAddTask = async () => {
+    setLoading(true);
+
+    await addTask(taskName, taskDescrip, dueDate, priority, project);     
+    
+    setLoading(false);
+    router.push("/app");
+  }
 
   return (
     <div className="w-full sm:max-w-[600px] bg-gray-100 dark:bg-zinc-950 border-2 border-gray-200 dark:border-zinc-800 rounded-t-xl md:rounded-xl">
@@ -82,9 +95,10 @@ const AddTask = () => {
 
       <div className="flex justify-between items-center py-3 px-6 border-t-2 border-gray-200 dark:border-zinc-800">
         <ProjectSelector project={project} setProject={setProject} />
-        <button onClick={() => {
-          addTask(taskName, taskDescrip, dueDate, priority, project);          
-        }} className="font-semibold py-2 px-3 bg-primaryLight dark:bg-primaryDark text-white hover:text-black dark:text-black dark:hover:text-white hover:bg-gray-200 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-200 rounded-lg">
+        <button
+          onClick={() => handleAddTask()}
+          className="font-semibold py-2 px-3 bg-primaryLight dark:bg-primaryDark text-white hover:text-black dark:text-black dark:hover:text-white hover:bg-gray-200 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all duration-200 rounded-lg"
+        >
           Add Task
         </button>
       </div>
