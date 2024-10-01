@@ -5,7 +5,7 @@ import Link from 'next/link';
 const AddNoteBtn = () => {
   return (
     <Link
-      href="/app?add-node=true"
+      href="/app?add-note=true"
       className="p-1 flex justify-center items-center"
     >
       <span className="stroke-black dark:stroke-white">
@@ -26,7 +26,6 @@ const AddNoteBtn = () => {
       </span>
     </Link>
   );
-
 }
 
 export default AddNoteBtn;
