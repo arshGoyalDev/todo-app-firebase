@@ -20,12 +20,12 @@ textarea:focus {
 /* firebox based browsers */
 
 @supports not selector(::-webkit-scrollbar) {
-  body * {
+  html * {
     scrollbar-color: #d1d5db transparent;
     scrollbar-width: thin;
   }
 
-  body.dark * {
+  html.dark * {
     scrollbar-color: #3f3f46 transparent;
   }
 }
@@ -33,14 +33,13 @@ textarea:focus {
 /* chromium based browsers */
 
 *::-webkit-scrollbar {
-  width: 7px;
+  width: 4px;
 }
 
-body *::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
-  border-radius: 10px;
+html *::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full
 }
 
-body.dark *::-webkit-scrollbar-thumb {
-  background: #3f3f46;
+html.dark *::-webkit-scrollbar-thumb {
+  @apply bg-zinc-700;
 }
