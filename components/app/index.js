@@ -1,3 +1,4 @@
+import Header from "./Header";
 import BottomNav from "./BottomNav";
 
-export { BottomNav };
+export { Header, BottomNav };
