@@ -1,8 +1,21 @@
 "use client";
 
-const SearchBox = ({ searchData, seatSearchData }) => {
+const SearchBox = ({ searchValue, setSearchValue, searchData, setSearchData, searchBoxVisible, setSearchBoxVisible }) => {
   return (
-    <div className="absolute top-16 left-0 w-[440px] h-52 bg-gray-50 dark:bg-zinc-900 rounded-lg overflow-y-auto">
+    <div className={`${searchValue ? "md:block" : "md:hidden"} ${searchBoxVisible ? "block" : "hidden md:block"} absolute top-16 right-0 md:left-0 w-[90vw] max-w-[440px] md:w-[440px] md:h-52 bg-gray-50 dark:bg-zinc-900 rounded-lg overflow-y-auto`}>
+
+      <div className="md:hidden py-4 px-4 border-b-2 border-gray-100 dark:border-zinc-800">
+      <input
+          type="text"
+          name="search"
+          value={searchValue}
+          autocomplete="off"
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Search for tasks..."
+          className="w-full py-3 px-5 bg-gray-100 dark:bg-zinc-800 placeholder:dark:text-zinc-600 rounded-lg"
+        />
+      </div>
+
       {searchData.length !== 0 ?
         searchData.map((el) => {
           return (
@@ -58,7 +71,7 @@ const SearchBox = ({ searchData, seatSearchData }) => {
             </>
           );
         }) : (
-          <div className="h-full grid place-content-center font-lg font-semibold">Found Nothing, Try searching something different.</div>
+          <div className="pt-16 grid place-content-center font-lg font-semibold text-center">Found Nothing, Try searching something different.</div>
         )}
     </div>
   );

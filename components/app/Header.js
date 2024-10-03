@@ -12,6 +12,8 @@ const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchData, setSearchData] = useState([]);
 
+  const [searchBoxVisible, setSearchBoxVisible] = useState(false);
+
   useEffect(() => {
     search(searchValue, searchData, setSearchData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,7 +34,14 @@ const Header = () => {
           className="w-96 hidden md:block py-3 px-5 bg-gray-50 dark:bg-zinc-900 placeholder:dark:text-zinc-600 rounded-lg"
         />
 
-        <button className="bg-gray-50 dark:bg-zinc-900 p-3 rounded-lg">
+        <button
+          className="bg-gray-50 dark:bg-zinc-900 p-3 rounded-lg"
+          onClick={() => {
+            searchBoxVisible
+              ? setSearchBoxVisible(false)
+              : setSearchBoxVisible(true);
+          }}
+        >
           <span className="stroke-black dark:stroke-white">
             <svg
               width="24"
@@ -58,9 +67,14 @@ const Header = () => {
           </span>
         </button>
 
-        {searchValue !== "" && (
-          <SearchBox searchData={searchData} seatSearchData={setSearchData} />
-        )}
+        <SearchBox
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          searchData={searchData}
+          seatSearchData={setSearchData}
+          searchBoxVisible={searchBoxVisible}
+          setSearchBoxVisible={setSearchBoxVisible}
+        />
       </div>
     </header>
   );
