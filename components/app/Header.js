@@ -26,6 +26,7 @@ const Header = () => {
           type="text"
           name="search"
           value={searchValue}
+          autocomplete="off"
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search for tasks..."
           className="w-96 hidden md:block py-3 px-5 bg-gray-50 dark:bg-zinc-900 placeholder:dark:text-zinc-600 rounded-lg"

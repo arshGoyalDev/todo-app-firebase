@@ -3,11 +3,11 @@
 const SearchBox = ({ searchData, seatSearchData }) => {
   return (
     <div className="absolute top-16 left-0 w-[440px] h-52 bg-gray-50 dark:bg-zinc-900 rounded-lg overflow-y-auto">
-      {searchData &&
+      {searchData.length !== 0 ?
         searchData.map((el) => {
           return (
             <>
-              <div className="flex justify-between items-center border-b-2 border-gray-100 dark:border-zinc-800 hover:bg-gray-400 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all cursor-pointer duration-200">
+              <div key={el.id} className="flex justify-between items-center border-b-2 border-gray-100 dark:border-zinc-800 hover:bg-gray-400 hover:dark:bg-zinc-800 hover:bg-opacity-10 transition-all cursor-pointer duration-200">
                 <div className="w-full flex gap-3 items-center p-3">
                   <span className="stroke-black dark:stroke-white">
                     <svg
@@ -57,7 +57,9 @@ const SearchBox = ({ searchData, seatSearchData }) => {
               </div>
             </>
           );
-        })}
+        }) : (
+          <div className="h-full grid place-content-center font-lg font-semibold">Found Nothing, Try searching something different.</div>
+        )}
     </div>
   );
 };
